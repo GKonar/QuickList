@@ -11,6 +11,7 @@ const Nav = styled.nav`
   color: #fff;
   border-bottom: .5rem solid #575fcf;
   border-top: .5rem solid #575fcf;
+  position: relative;
 
   svg {
     width: 50px;
@@ -32,6 +33,13 @@ const Title = styled.h1`
   padding-top: 5px;
 `
 
+const Author = styled.span`
+  position: absolute;
+  bottom: -5px;
+  right: 3px;
+  font-size:  ${({ theme }) => theme.fontSize.secondary};
+`
+
 function Navbar() {
   return (
     <Nav>
@@ -39,6 +47,7 @@ function Navbar() {
       <IconWrap>
         <MagicFox />
       </IconWrap>
+      <Author>By GKonar</Author>
     </Nav>
   )
 }
