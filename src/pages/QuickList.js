@@ -15,6 +15,9 @@ const InputWrap = styled.div`
 `
 
 function QuickList() {
+
+
+
   return (
     <ListWrap>
       <Navbar />
@@ -25,4 +28,4 @@ function QuickList() {
   )
 }
 
-export default QuickList
+export default QuickList;

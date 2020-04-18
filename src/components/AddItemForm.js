@@ -65,7 +65,6 @@ function Input() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value);
   }
 
   return (
