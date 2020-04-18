@@ -17,6 +17,10 @@ const StyledInput = styled.input`
   transition: .1s;
   border: 2px solid #575fcf;
 
+  &:hover {
+    border: 2px solid #6ab04c;
+  }
+
   &:focus {
     border: 4px solid #6ab04c;
   }
@@ -65,6 +69,10 @@ function Input() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (value !== '') {
+      console.log(value);
+    }
+    setValue('');
   }
 
   return (
