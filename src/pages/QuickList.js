@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
@@ -10,6 +10,7 @@ import AddItemForm from '../components/AddItemForm';
 import light1 from '../assets/backgrounds/beanstalk.png';
 import dark1 from '../assets/backgrounds/beanstalk-dark.png';
 
+import { ItemsContext } from '../context/items.context';
 
 const ListWrap = styled.section`
   height: 100vh;
@@ -22,8 +23,8 @@ const InputWrap = styled.div`
 `
 
 function QuickList() {
-
-
+  const { items } = useContext(ItemsContext);
+  console.log(items)
 
   return (
     <ListWrap>
