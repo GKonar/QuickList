@@ -1,5 +1,6 @@
 import React from 'react';
 import QuickList from './pages/QuickList';
+import { ItemsProvider } from './context/items.context';
 
 // styled
 import styled from 'styled-components';
@@ -13,9 +14,11 @@ const AppWrap = styled.div`
 function App() {
   return (
     <ThemeProvider theme={appTheme}>
-      <AppWrap>
-        <QuickList />
-      </AppWrap>
+      <ItemsProvider>
+        <AppWrap>
+          <QuickList />
+        </AppWrap>
+      </ItemsProvider>
     </ThemeProvider>
   );
 }
