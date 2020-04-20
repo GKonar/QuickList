@@ -15,7 +15,7 @@ const StyledInput = styled.input`
   border-radius: 5px;
   outline: none;
   transition: .1s;
-  border: 2px solid #575fcf;
+  border: 2px solid #6ab04c;
 
   &:hover {
     border: 2px solid #6ab04c;
@@ -39,7 +39,7 @@ const StyledButton = styled.button`
   position: relative;
   cursor: pointer;
   outline: none;
-  background-color: #575fcf;
+  background-color: #badc58;
   box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.75);
   transition: .2s;
 

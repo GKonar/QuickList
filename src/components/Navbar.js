@@ -6,11 +6,11 @@ import { ReactComponent as MagicFox } from '../assets/icons/fox.svg';
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  background-color: #3c40c6;
+  background-color: #6ab04c;
   padding:  ${({ theme }) => theme.padding.regular};
   color: #fff;
-  border-bottom: .5rem solid #575fcf;
-  border-top: .5rem solid #575fcf;
+  border-bottom: .5rem solid #badc58;
+  border-top: .5rem solid #badc58;
   position: relative;
 
   svg {
@@ -38,6 +38,7 @@ const Author = styled.span`
   bottom: -5px;
   right: 3px;
   font-size:  ${({ theme }) => theme.fontSize.secondary};
+  color: #badc58;
 `
 
 function Navbar() {
