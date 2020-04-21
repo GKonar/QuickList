@@ -30,8 +30,8 @@ const StyledButton = styled.button`
   border: none;
   font-size: ${({ theme }) => theme.fontSize.bigger};
   margin-left: ${({ theme }) => theme.margin.regular};
-  width: 62px;
-  height: 50px;
+  width: 60px;
+  height: 55px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
