@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components';
+import { sizes } from '../helpers/sizes';
+import { ItemsContext } from '../context/items.context';
 
 const StyledForm = styled.form`
-  width: 100%;
-  max-width: 400px;
   display: flex;
   align-items: center;
 `
 const StyledInput = styled.input`
-  width: 100%;
+  width: 400px;
+  display: flex;
+  min-width: 200px;
   height: 30px;
   font-size: ${({ theme }) => theme.fontSize.default};
   border: none;
@@ -24,14 +26,24 @@ const StyledInput = styled.input`
   &:focus {
     border: 4px solid #6ab04c;
   }
+
+  ${sizes.tablet} {
+    width: 350px;
+  }
+  ${sizes.mobileL} {
+    width: 250px;
+  }
+  ${sizes.mobileM} {
+    width: 200px;
+  }
 `
 
 const StyledButton = styled.button`
   border: none;
   font-size: ${({ theme }) => theme.fontSize.bigger};
   margin-left: ${({ theme }) => theme.margin.regular};
-  width: 60px;
-  height: 55px;
+  width: 60px; /* MOBILE */
+  height: 60px; /* MOBILE */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -62,6 +74,8 @@ const StyledButton = styled.button`
 `
 
 function Input() {
+  const { addItem } = useContext(ItemsContext);
+
   const [value, setValue] = useState('');
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -78,8 +92,8 @@ function Input() {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledInput onChange={handleChange} type="text" name="search" value={value} />
-      <StyledButton type="submit"><span>+</span></StyledButton>
-    </StyledForm>
+      <StyledButton onClick={() => addItem(value)} type="submit"><span>+</span></StyledButton>
+    </StyledForm >
   )
 }
 

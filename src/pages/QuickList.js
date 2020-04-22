@@ -29,9 +29,11 @@ const InputWrap = styled.div`
   margin: ${({ theme }) => theme.margin.default};
 `
 
-const ItemsList = styled.ul``
-
-
+const ItemsList = styled.ul`
+  padding: 0 ${({ theme }) => theme.padding.large};
+  display: flex;
+  flex-direction: column;
+`
 
 function QuickList() {
   const { items } = useContext(ItemsContext);
@@ -47,7 +49,7 @@ function QuickList() {
         <ItemsList>
           {
             items.map((item, i) => {
-              return <ListItem name={item.name} key={i} />
+              return <ListItem name={item.name} key={i} id={item.id} />
             })
           }
         </ItemsList>
