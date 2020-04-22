@@ -10,6 +10,7 @@ const theme = {
   },
 
   margin: {
+    xsmall: '4px',
     small: '8px',
     regular: '12px',
     default: '16px',
