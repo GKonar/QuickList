@@ -21,7 +21,7 @@ const StyledInput = styled.input`
   border: 2px solid #6ab04c;
 
   &:hover {
-    border: 2px solid #6ab04c;
+    border: 2px solid #6ab04c;  
   }
 
   &:focus {
@@ -32,7 +32,7 @@ const StyledInput = styled.input`
     width: 75%;  
   }
   ${sizes.mobileS} {
-    width: 65%;  
+    width: 70%;  
   }
 `
 

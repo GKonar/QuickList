@@ -12,10 +12,11 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 3s;
 `
 
 const ItemName = styled.p`
-  transition: .2s;
+  transition: 3s;
 `
 
 const NameWrap = styled.div`
@@ -66,4 +67,4 @@ function ListItem({ name, id }) {
   )
 }
 
-export default ListItem
+export default ListItem;
