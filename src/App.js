@@ -7,9 +7,7 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import appTheme from './themes/appTheme';
 
-const AppWrap = styled.div`
-  /* margin: ${({ theme }) => theme.margin.regular}; */
-`;
+const AppWrap = styled.div``;
 
 function App() {
   return (

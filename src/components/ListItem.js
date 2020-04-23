@@ -11,14 +11,20 @@ const Item = styled.li`
   color: #6ab04c;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `
 
 const ItemName = styled.p`
   transition: .2s;
 `
 
+const NameWrap = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 const RemoveButton = styled.button`
-  margin: ${({ theme }) => theme.margin.xsmall} ${({ theme }) => theme.margin.default};
+  margin: ${({ theme }) => theme.margin.xsmall} 0;
   color: #fff;
   font-weight: 800;
   width: 40px;
@@ -27,7 +33,6 @@ const RemoveButton = styled.button`
   border: 1px solid #ff3f34;
   background-color: #ff7675;
   cursor: pointer;
-  order: 1;
 
   span {
     svg {
@@ -39,7 +44,7 @@ const RemoveButton = styled.button`
 `
 
 const Checkbox = styled.input`
-margin: 0 ${({ theme }) => theme.margin.small};
+  margin: ${({ theme }) => theme.margin.small}  0;
 `
 
 function ListItem({ name, id }) {
@@ -51,10 +56,12 @@ function ListItem({ name, id }) {
   }
 
   return (
-    <Item>
-      <Checkbox type="checkbox" onChange={(e) => handleCheck(e, checked)} checked={checked} />
+    <Item style={{ order: checked ? '1' : '-1' }}>
+      <NameWrap>
+        <Checkbox type="checkbox" onChange={(e) => handleCheck(e, checked)} checked={checked} />
+        <ItemName style={{ opacity: checked ? '.5' : '1' }}>{name}</ItemName>
+      </NameWrap>
       <RemoveButton onClick={() => removeItem(id)}><span><Bin /></span></RemoveButton>
-      <ItemName style={{ opacity: checked ? '.5' : '1' }}>{name}</ItemName>
     </Item>
   )
 }

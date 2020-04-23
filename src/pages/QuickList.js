@@ -5,6 +5,8 @@ import Navbar from '../components/Navbar';
 import AddItemForm from '../components/AddItemForm';
 import ListItem from '../components/ListItem';
 
+import { sizes } from '../helpers/sizes';
+
 // import light from '../assets/backgrounds/what-the-hex.png';
 // import dark from '../assets/backgrounds/what-the-hex-dark.png';
 
@@ -21,18 +23,22 @@ const ListWrap = styled.section`
 const MainContent = styled.div`
   max-width: 450px;
   margin: 0 auto;
+
+  ${sizes.mobileL} {
+    margin: 0 ${({ theme }) => theme.margin.default};    
+  }
 `
 
-const InputWrap = styled.div`
+const FormWrap = styled.div`
   display: flex;
-  justify-content: center;
-  margin: ${({ theme }) => theme.margin.default};
+  justify-content: space-between;
+  margin: ${({ theme }) => theme.margin.default} 0;
 `
 
 const ItemsList = styled.ul`
-  padding: 0 ${({ theme }) => theme.padding.large};
   display: flex;
   flex-direction: column;
+  padding: 0;
 `
 
 function QuickList() {
@@ -43,13 +49,15 @@ function QuickList() {
     <ListWrap>
       <Navbar />
       <MainContent>
-        <InputWrap>
+        <FormWrap>
           <AddItemForm />
-        </InputWrap>
+        </FormWrap>
         <ItemsList>
           {
             items.map((item, i) => {
-              return <ListItem name={item.name} key={i} id={item.id} />
+              return (
+                <ListItem name={item.name} key={i} id={item.id} />
+              )
             })
           }
         </ItemsList>

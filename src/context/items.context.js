@@ -12,7 +12,7 @@ export function ItemsProvider({ children }) {
       id: uuidv4(),
       lang: 'PL'
     }
-    setItems([...items, newItem]);
+    if (item !== '') setItems([...items, newItem]);
   }
 
   const removeItem = (itemId) => {
