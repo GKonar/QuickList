@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-
 import { ItemsContext } from '../context/items.context';
-
 import { ReactComponent as Bin } from '../assets/icons/bin.svg';
+import useToggle from '../hooks/useToggle';
+
 
 const Item = styled.li`
   list-style-type: none;
@@ -12,11 +12,10 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: 3s;
 `
 
 const ItemName = styled.p`
-  transition: 3s;
+  transition: 1s;
 `
 
 const NameWrap = styled.div`
@@ -45,21 +44,19 @@ const RemoveButton = styled.button`
 `
 
 const Checkbox = styled.input`
-  margin: ${({ theme }) => theme.margin.small}  0;
+  margin: ${({ theme }) => theme.margin.xsmall};
+  position: relative;
+  top: -1px;
 `
 
 function ListItem({ name, id }) {
   const { removeItem } = useContext(ItemsContext);
-  const [checked, setChecked] = useState(false);
-
-  const handleCheck = (e, checked) => {
-    setChecked(e.target.checked);
-  }
+  const [checked, setChecked] = useToggle(false);
 
   return (
     <Item style={{ order: checked ? '1' : '-1' }}>
       <NameWrap>
-        <Checkbox type="checkbox" onChange={(e) => handleCheck(e, checked)} checked={checked} />
+        <Checkbox type="checkbox" onChange={(e) => setChecked(e, checked)} checked={checked} />
         <ItemName style={{ opacity: checked ? '.5' : '1' }}>{name}</ItemName>
       </NameWrap>
       <RemoveButton onClick={() => removeItem(id)}><span><Bin /></span></RemoveButton>

@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react';
+import useInputState from '../hooks/useInputState';
 import styled from 'styled-components';
 import { sizes } from '../helpers/sizes';
 import { ItemsContext } from '../context/items.context';
@@ -27,6 +28,11 @@ const StyledInput = styled.input`
   &:focus {
     border: 4px solid #6ab04c;
   }  
+
+  &::placeholder {
+    opacity: .4;
+    padding-left: ${({ theme }) => theme.padding.xsmall};
+  }
   
   ${sizes.mobileL} {
     width: 75%;  
@@ -72,23 +78,17 @@ const StyledButton = styled.button`
 
 function Input() {
   const { addItem } = useContext(ItemsContext);
-
-  const [value, setValue] = useState('');
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  }
+  const [value, setValue, reset] = useInputState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value !== '') {
-      console.log(value);
-    }
-    setValue('');
+    if (value !== '') return
+    reset();
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <StyledInput onChange={handleChange} type="text" name="search" value={value} />
+      <StyledInput onChange={setValue} type="text" name="search" value={value} placeholder='Add item...' />
       <StyledButton onClick={() => addItem(value)} type="submit"><span>+</span></StyledButton>
     </StyledForm>
   )
