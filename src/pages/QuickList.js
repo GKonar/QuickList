@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
@@ -41,28 +41,39 @@ const ItemsList = styled.ul`
   padding: 0;
 `
 
+const AddItemPrompt = styled.h1`
+  text-align: center;
+  color: #6ab04c;
+  opacity: .6;
+  cursor: pointer;
+  font-size: 30px;
+`
+
 function QuickList() {
   const { items } = useContext(ItemsContext);
-  console.log(items)
+  const inputRef = useRef();
 
   return (
     <ListWrap>
       <Navbar />
       <MainContent>
         <FormWrap>
-          <AddItemForm />
+          <AddItemForm ref={inputRef} />
         </FormWrap>
         <ItemsList>
           {
-            items.map((item, i) => {
-              return (
-                <ListItem name={item.name} key={i} id={item.id} />
+            items.length > 0 ?
+              items.map((item, i) => {
+                return (
+                  <ListItem name={item.name} key={i} id={item.id} />
+                )
+              }) : (
+                <AddItemPrompt onClick={() => inputRef.current.focus()}>Start Adding Items</AddItemPrompt>
               )
-            })
           }
         </ItemsList>
       </MainContent>
-    </ListWrap>
+    </ListWrap >
   )
 }
 

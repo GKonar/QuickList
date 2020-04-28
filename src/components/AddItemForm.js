@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import useInputState from '../hooks/useInputState';
 import styled from 'styled-components';
 import { sizes } from '../helpers/sizes';
@@ -76,22 +76,27 @@ const StyledButton = styled.button`
   }
 `
 
-function Input() {
+const Input = React.forwardRef((props, ref) => {
   const { addItem } = useContext(ItemsContext);
   const [value, setValue, reset] = useInputState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value !== '') return
+  }
+
+  const handleAddItem = () => {
+    addItem(value);
     reset();
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <StyledInput onChange={setValue} type="text" name="search" value={value} placeholder='Add item...' />
-      <StyledButton onClick={() => addItem(value)} type="submit"><span>+</span></StyledButton>
+      <StyledInput onChange={setValue} type="text" name="search" value={value} placeholder='Add item...' ref={ref} />
+      <StyledButton onClick={handleAddItem} type="submit"><span>+</span></StyledButton>
     </StyledForm>
+
   )
-}
+})
 
 export default Input
