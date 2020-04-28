@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import useInputState from '../hooks/useInputState';
 import styled from 'styled-components';
 import { sizes } from '../helpers/sizes';
@@ -76,7 +76,7 @@ const StyledButton = styled.button`
   }
 `
 
-const Input = React.forwardRef((props, ref) => {
+function Input(props, ref) {
   const { addItem } = useContext(ItemsContext);
   const [value, setValue, reset] = useInputState('');
 
@@ -97,6 +97,6 @@ const Input = React.forwardRef((props, ref) => {
     </StyledForm>
 
   )
-})
+}
 
-export default Input
+export default forwardRef(Input);
