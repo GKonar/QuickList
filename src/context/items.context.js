@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 export const ItemsContext = createContext();
 
 export function ItemsProvider({ children }) {
-  const [items, setItems] = useState([{ name: 'buraki', id: 1, lang: 'PL' }, { name: 'ziemniaki', id: 2, lang: 'PL' }])
+  // const [items, setItems] = useState([{ name: 'buraki', id: 1, lang: 'PL' }, { name: 'ziemniaki', id: 2, lang: 'PL' }])
+  const [items, setItems] = useState([])
 
   const addItem = (item) => {
     let newItem = {
