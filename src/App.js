@@ -7,7 +7,9 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import appTheme from './themes/appTheme';
 
-const AppWrap = styled.div``;
+const AppWrap = styled.div`
+  font-family: 'Baloo Tamma 2', cursive;
+`;
 
 function App() {
   return (
