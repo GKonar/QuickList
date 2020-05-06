@@ -28,12 +28,10 @@ const theme = {
   indentation: 50,
 
   color: {
-    main: '#F59486',
-    primary: '#2f3542',
-    secondary: '#f1f2f6',
-    white: '#FFFFFF',
-    error: '#e74c3c',
-    success: '#32ff7e'
+    main: '#6ab04c',
+    secondary: '#badc58',
+    warning: '#ffbe76',
+    warningHover: '#f0932b',
   },
 
   fontSize: {
@@ -45,11 +43,6 @@ const theme = {
     readable: '14px',
     secondary: '12px',
     tiny: '10px',
-  },
-
-  input: {
-    border: '1px solid #dedede',
-    borderRadius: '4px',
   },
 };
 
