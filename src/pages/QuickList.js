@@ -43,14 +43,42 @@ const ItemsList = styled.ul`
 
 const AddItemPrompt = styled.h1`
   text-align: center;
-  color: #6ab04c;
+  color: ${({ theme }) => theme.color.main};
   opacity: .6;
   cursor: pointer;
   font-size: 30px;
 `
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const ClearItemsButton = styled.button`
+  border: none;
+  background-color: ${({ theme }) => theme.color.warning};
+  font-family: inherit;
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+  padding: 0 ${({ theme }) => theme.padding.between};
+  padding-top: 5px;
+  color: white;
+  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-weight: 600;
+  box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.75);
+  cursor: pointer;
+  transition: .2s;
+  outline: none;
+  opacity: .7;
+
+  &:hover {
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.75);
+    background-color: ${({ theme }) => theme.color.warningHover};
+    opacity: 1;
+  }
+`
+
 function QuickList() {
-  const { items } = useContext(ItemsContext);
+  const { items, clearList } = useContext(ItemsContext);
   const inputRef = useRef();
 
   return (
@@ -72,6 +100,11 @@ function QuickList() {
               )
           }
         </ItemsList>
+        <ButtonContainer>
+          { // clear items button
+            items.length > 0 && <ClearItemsButton onClick={clearList}>CLEAR</ClearItemsButton>
+          }
+        </ButtonContainer>
       </MainContent>
     </ListWrap >
   )
