@@ -21,8 +21,13 @@ export function ItemsProvider({ children }) {
     setItems(updatedList);
   }
 
+  const clearList = () => {
+    console.log('list cleared succesfully');
+    setItems([]);
+  }
+
   return (
-    <ItemsContext.Provider value={{ items, addItem, removeItem }} >
+    <ItemsContext.Provider value={{ items, addItem, removeItem, clearList }} >
       {children}
     </ItemsContext.Provider>
   )
